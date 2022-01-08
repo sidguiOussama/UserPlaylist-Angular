@@ -1,0 +1,144 @@
+<!--<div>
+  <h1>Create New Advert</h1>
+
+  <div class="form-group">
+    <label>Title : </label>
+    <input type="text" class="form-control" [(ngModel)]="advert.title" placeholder="Enter Title">
+  </div>
+
+  <div class="form-group">
+    <label>description : </label>
+    <input type="text" class="form-control" [(ngModel)]="advert.description" placeholder="Enter description">
+  </div>
+
+  <div class="form-group">
+    <label>location : </label>
+    <input type="text" class="form-control" [(ngModel)]="advert.location" placeholder="Enter location">
+  </div>
+
+  <div class="form-group">
+    <label>period : </label>
+    <input type="text" class="form-control" [(ngModel)]="advert.period" (change)="changeCost()" placeholder="Enter period">
+  </div>
+
+  <div class="form-group">
+    <label>Cost : </label>
+    <input type="text" class="form-control"  disabled [(ngModel)]="advert.cost">
+  </div>
+
+  <div class="form-group">
+    <label>Link : </label>
+    <input type="link" class="form-control" [(ngModel)]="advert.link" placeholder="Enter link">
+  </div>
+
+  <input type="file" class="file-upload"  (change)="handleUpload($event)">
+
+  <div class="mt-5 d-flex justify-content-end">
+    <div>
+      <button type="submit" class="btn btn-danger pull-right btn-lg" (click)="onNoClick()">Cancel</button>
+    </div>
+    <div style="margin-left: 2%">
+      <button type="submit" class="btn btn-success pull-right btn-lg" (click)="onClick()">Create</button>
+    </div>
+  </div>
+</div>
+-->
+
+<mat-horizontal-stepper linear="true">
+  <mat-step label="Advert Information" >
+    <h1>Please fill in your ad information</h1>
+    <div class="form-group">
+      <label>Title : </label>
+      <input type="text" class="form-control" [(ngModel)]="advert.title" placeholder="Enter Title">
+    </div>
+
+    <div class="form-group">
+      <label>description : </label>
+      <input type="text" class="form-control" [(ngModel)]="advert.description" placeholder="Enter description">
+    </div>
+
+    <div class="form-group">
+      <label>Link : </label>
+      <input type="link" class="form-control" [(ngModel)]="advert.link" placeholder="Enter link">
+    </div>
+
+    <div class="mt-5">
+      <button type="submit" class="btn btn-danger pull-right" (click)="onNoClick()">Cancel</button>
+      <button mat-button matStepperNext class="btn btn-success pull-right" style="margin-left: 1%;">Next</button>
+    </div>
+
+  </mat-step>
+  <mat-step label="Audience">
+    <h1>Select the target audience</h1>
+    <!-- Age or Auto-->
+    <div class="form-group">
+      <label>location : </label>
+      <!--CheckBox groupe-->
+      <form [formGroup]="form">
+        <div *ngFor="let item of MoviesData; let i=index" class="form-check form-check-inline">
+          <label class="form-check-label">
+            <input type="checkbox" class="form-check-input" [value]="item.value" (change)="onCbChange($event)" />
+            {{item.name}}
+          </label>
+        </div>
+      </form>
+      <!-- End CheckBox groupe-->
+    </div>
+
+    <div  class="mt-5">
+      <button type="submit" class="btn btn-danger pull-right" (click)="onNoClick()">Cancel</button>
+      <button mat-button matStepperPrevious class="btn btn-primary pull-right" style="margin-left: 1%;">Back</button>
+      <button mat-button matStepperNext class="btn btn-success pull-right" style="margin-left: 1%;">Next</button>
+    </div>
+
+  </mat-step>
+  <mat-step label="budget and duration">
+
+    <div class="d-flex justify-content-center">
+      <h1>{{advert.cost}}$ for {{advert.period}} days</h1>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <h1>Total Coverage = {{advert.coverage}} user</h1>
+    </div>
+
+    <div class="form-group">
+      <div class="example-label-container">
+        <label id="example-name-label" class="example-name-label">Daily budget : {{advert.daily_budget}} $ </label>
+      </div>
+      <mat-slider
+        (change)="changeCost()"
+        class="example-margin"
+        [max]="1000"
+        [min]="1"
+        [step]="1"
+        [(ngModel)]="advert.daily_budget"
+        aria-labelledby="example-name-label">
+      </mat-slider>
+    </div>
+
+    <div class="form-group">
+      <div class="example-label-container">
+        <label  class="example-name-label">Duration : {{advert.period}} days </label>
+      </div>
+      <mat-slider
+        (change)="changeCost()"
+        class="example-margin"
+        [max]="365"
+        [min]="1"
+        [step]="1"
+        [(ngModel)]="advert.period"
+        aria-labelledby="example-name-label">
+      </mat-slider>
+    </div>
+
+    <div class="mt-5">
+      <button type="submit" class="btn btn-danger pull-right" (click)="onNoClick()">Cancel</button>
+      <button mat-button matStepperPrevious class="btn btn-primary pull-right" style="margin-left: 1%;">Back</button>
+      <button type="submit" class="btn btn-success pull-right" style="margin-left: 1%;" (click)="onClick()">Create</button>
+    </div>
+
+  </mat-step>
+</mat-horizontal-stepper>
+
+

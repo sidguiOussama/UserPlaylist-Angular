@@ -1,0 +1,17 @@
+<div>
+  <h1>Create New Playlist</h1>
+
+  <div class="form-group">
+    <label>Name : </label>
+    <input type="text" class="form-control" [(ngModel)]="name" placeholder="Enter Name">
+  </div>
+
+  <div class="mt-5 d-flex justify-content-end">
+    <div>
+      <button type="submit" class="btn btn-danger pull-right btn-lg" (click)="onNoClick()">Cancel</button>
+    </div>
+    <div style="margin-left: 2%">
+      <button type="submit" class="btn btn-success pull-right btn-lg" (click)="onClick()">Create</button>
+    </div>
+  </div>
+</div>

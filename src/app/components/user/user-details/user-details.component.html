@@ -1,0 +1,142 @@
+<div class="mt-5">
+  <div class="container">
+    <div class="card mt-3">
+      <div class="card-header d-flex  justify-content-center">
+        <h1>{{user.firstname}} {{user.lastname}}</h1>
+      </div>
+      <div class="row m-3">
+        <h1>Personal Informations</h1>
+        <hr/>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Firstname : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.firstname}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">LastName : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.lastname}}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">UserName : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.login}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-3" *ngIf="user.contact">
+        <h1>Contact</h1>
+        <hr/>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Phone : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.contact.phone}}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Email : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.contact.email}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-3" *ngIf="user.address">
+        <h1>Address</h1>
+        <hr/>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Country : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.address.country}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">City : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.address.city}}</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">ZipCode : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.address.zipCode}}</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Address : </label>
+            </div>
+            <div class="col-md-3">
+              <h3>{{user.address.address}}</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-3" *ngIf="user.role == 'advert'">
+        <h1>Ads</h1>
+        <hr/>
+        <div class="col">
+          <div class="row">
+            <table class="table table-hover bg-white">
+              <thead class="bg-success">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Title</th>
+                <th scope="col">Location</th>
+                <th scope="col">Period</th>
+                <th scope="col"></th>
+
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let advert of adverts;let index=index;">
+                <th scope="row">{{index}}</th>
+                <td>{{advert.title}}</td>
+                <td>{{advert.location}}</td>
+                <td>{{advert.period}} days</td>
+                <td class="d-flex justify-content-end">
+                  <button class="btn-sm btn-success" routerLink="/advert/{{advert._id}}">Details</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

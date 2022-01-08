@@ -1,0 +1,49 @@
+<div class="mt-5 col-6 offset-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="row">
+          <div class="col-sm">
+            <h4 class="text-white col-sm">Filter By Role:</h4>
+            <select class="form-select col-sm" [(ngModel)]="selectedOption" name="first" (change)="onChange()">
+              <option  *ngFor="let o of choices" value="{{o.name}}">
+                {{o.label}}
+              </option>
+            </select>
+          </div>
+
+          <div class="col-sm">
+            <h4 class="text-white col-sm">Filter By Keyword :</h4>
+            <input class="form-control" type="text" [(ngModel)]="filterName" (keyup)="filterByName()" />
+          </div>
+
+        </div>
+
+      </div>
+      <table class="table mt-4">
+        <tr class="border border-2 border-success" *ngFor="let user of filterUser">
+          <td class="align-middle mw-100" style="text-align: left;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="white" class="bi bi-person-circle" viewBox="0 0 16 16">
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+            </svg>
+          </td>
+          <td class="align-middle text-white" style="text-align: center">
+            <div>
+              <h1>{{user.firstname}} {{user.lastname}}</h1>
+              {{user.contact.email}}
+            </div>
+          </td>
+          <td class="align-middle" style="text-align: right">
+            <a>
+              <button type="button" class="btn btn-outline-light m-0 waves-effect" routerLink="/user/{{user.id}}">
+                Details
+              </button>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

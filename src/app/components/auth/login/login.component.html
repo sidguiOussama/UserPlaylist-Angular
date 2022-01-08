@@ -1,0 +1,22 @@
+<div class="mt-5">
+  <div class="container">
+    <form [formGroup]="userForm" (ngSubmit)="OnSubmit()" >
+
+
+      <div class="row mt-3">
+        <div class="col-6">
+          <input type="text" class="form-control" placeholder="Login" formControlName="login">
+        </div>
+        <div class="col-6">
+          <input type="password" class="form-control"  placeholder="Password" formControlName="password">
+        </div>
+      </div>
+
+      <div class="mt-5 d-flex justify-content-end">
+        <div>
+          <button type="submit" class="btn btn-success pull-right btn-lg" [disabled]="!userForm.valid">Login</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

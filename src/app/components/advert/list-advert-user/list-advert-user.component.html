@@ -1,0 +1,36 @@
+<!--
+TODO LIST
+* TABLE  HTML
+--->
+
+<div class="mt-5">
+  <div class="container">
+    <button class="btn btn-success" (click)="openDialog()">New Advert</button>
+    <table class="mt-5 table table-hover bg-white">
+      <thead class="bg-success">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Location</th>
+        <th scope="col">Period</th>
+        <th scope="col"></th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let advert of adverts;let index=index;">
+        <th scope="row">{{index}}</th>
+        <td>{{advert.title}}</td>
+        <td>{{advert.location}}</td>
+        <td>{{advert.period}} days</td>
+        <td class="d-flex justify-content-end">
+          <button class="btn-sm btn-success" routerLink="/advert/{{advert._id}}">Details</button>
+          <button style="margin-left: 2%;" class="btn-sm btn-danger" (click)="deleteAdvert(advert._id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

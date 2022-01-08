@@ -1,0 +1,50 @@
+<div class="mt-5">
+  <div class="container text-white">
+      <div class="row">
+        <div class="col mb-4">
+          <button class="btn btn-success"  (click)="openDialog()">New Playlist</button>
+        </div>
+      </div>
+
+      <div class="mt-5">
+          <div class="row row-cols-1 row-cols-md-2">
+            <div *ngFor=" let playlist of playlists;">
+              <div class="col mb-4">
+                <div class="card rounded bg-transparent border-success">
+                  <div class="row mt-2">
+                    <div class="col-4">
+                      <div class="m-2 text-center text-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="white" class="bi bi-play" viewBox="0 0 16 16">
+                          <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="text-center mt-5">
+                        <h1 class="">{{playlist.name}}</h1>
+                        <p class="">{{playlist.createdAt | date }}</p>
+                        <a class="btn btn-success"  routerLink="/playlists/videos/{{playlist._id}}">Open</a>
+                        <button  style="margin-left: 2%" class="btn btn-danger" (click)="deletePlayList(playlist._id)">Delete</button>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="card-footer bg-success mt-5">
+                    <div class="row pt-3">
+                      <div class="col-sm">
+                        <div class="text-center ">
+                          <h4>Videos : {{playlist.videos.length}}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+
+
+  </div>
+</div>

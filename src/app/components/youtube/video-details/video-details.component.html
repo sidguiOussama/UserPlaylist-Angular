@@ -1,0 +1,35 @@
+<div class="mt-5">
+  <div class="container text-white">
+    <div class="row">
+        <div class="col-8">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"> <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" [src]="url" width="100%" height="100%" allowfullscreen allow="autoplay"> </iframe> </div>
+          <h5 class="mt-2">{{ message.title }}</h5>
+
+          <div class="mt-2">
+            <div class="row">
+                <div class="col-6">
+                  <select class="form-select" [(ngModel)]="selectedOption" name="first">
+                    <option selected >Choice your Playlist</option>
+                    <option *ngFor="let o of playlists" value="{{o._id}}">
+                      {{o.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-6">
+                  <h5  style="margin: 2%;" class="btn btn-success" (click)="addToPlaylist()">Add to Playlist</h5>
+                </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+      <div class="col-4">
+        <h6>@{{message.owner}}</h6>
+        <h6>{{message.description}}</h6>
+        <a class="btn btn-success">Open on Daily Motion </a>
+      </div>
+    </div>
+  </div>
+</div>

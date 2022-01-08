@@ -1,0 +1,140 @@
+<!--<div class="mt-5">
+  <div *ngIf="advert!=undefined" class="container">
+      <div class="row">
+        <div class="col-4">
+            <div class="row flex-column card">
+                <h1>{{ advert.title }}</h1>
+                <p class="text-success">{{advert.description}}</p>
+            </div>
+
+            <div class="row mt-3">
+              <ul class="list-group">
+                <li class="list-group-item ">
+                  <i><b>link : </b> {{advert.link}}</i>
+                </li>
+                <li class="list-group-item ">
+                  <i><b>Cost : </b> {{advert.cost}}</i>
+                </li>
+                <li class="list-group-item ">
+                  <i><b>Period : </b> {{advert.period}}</i>
+                </li>
+                <li class="list-group-item ">
+                  <i><b>Location : </b> {{advert.location}}</i>
+                </li>
+                <li class="list-group-item ">
+                  <i><b>Clicks : </b> {{advert.clicks}}</i>
+                </li>
+                <li class="list-group-item ">
+                  <i><b>Impression : </b> {{advert.impression}}</i>
+                </li>
+              </ul>
+            </div>
+        </div>
+
+        <div style="margin-left: 2%;" class="col-7 bg-white card">
+            <img src="favicon.ico>"/>
+        </div>
+      </div>
+  </div>
+</div>-->
+
+<div class="mt-5">
+  <div class="container">
+      <div class="card">
+            <div class="card-header">
+              <div class="row m-2">
+                <div class="col-sm text-primary">
+                  <label>Clicks</label>
+                  <h1>{{advert.clicks.length}} Times</h1>
+                  <hr/>
+                </div>
+
+                <div class="col-sm text-danger">
+                  <label>Impressions</label>
+                  <h1>{{advert.impression}} Times</h1>
+                  <hr/>
+                </div>
+
+                <div class="col-sm text-success">
+                  <label>Cost</label>
+                  <h1>1{{advert.cost}}$</h1>
+                  <hr/>
+                </div>
+
+                <div class="col-sm">
+                  <label>Period</label>
+                  <h1>{{advert.period}} Days</h1>
+                  <hr/>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm m-3">
+                  <div>
+                    <label>Title</label>
+                    <h3>{{ advert.title }}</h3>
+                    <hr/>
+                  </div>
+
+                  <div>
+                    <label>Description</label>
+                    <h3>{{advert.description}}</h3>
+                    <hr/>
+                  </div>
+
+                  <div>
+                    <label>Location</label>
+                    <h3>{{advert.location}}</h3>
+                    <hr/>
+                  </div>
+
+                  <div>
+                    <label>Link</label>
+                    <h3>{{ advert.link }}</h3>
+                    <hr/>
+                  </div>
+
+                  <div>
+                    <label>Daily budget</label>
+                    <h3>{{ advert.daily_budget }}</h3>
+                    <hr/>
+                  </div>
+
+                  <div>
+                    <label>Coverage</label>
+                    <h3>{{advert.coverage}}</h3>
+                    <hr/>
+                  </div>
+                </div>
+                <div class="col-sm m-3">
+                  <div style="display: block;">
+                    <canvas baseChart
+                            [datasets]="lineChartData"
+                            [labels]="lineChartLabels"
+                            [options]="lineChartOptions"
+                            [colors]="lineChartColors"
+                            [legend]="lineChartLegend"
+                            [chartType]="lineChartType"
+                            [plugins]="lineChartPlugins">
+                    </canvas>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="card-footer d-flex  justify-content-end">
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-danger" type="button">Cancel</button>
+                <button class="btn btn-success me-md-2" type="button">Save</button>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button class="btn btn-danger" type="button">Stop</button>
+                <button class="btn btn-success me-md-2" type="button">Update</button>
+              </div>
+
+            </div>
+      </div>
+  </div>
+</div>

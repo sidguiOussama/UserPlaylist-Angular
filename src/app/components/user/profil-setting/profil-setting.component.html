@@ -1,0 +1,118 @@
+<div class="mt-5">
+  <div class="container">
+    <div class="card mt-3">
+      <div class="card-header d-flex  justify-content-center">
+        <h1>{{editedUser.firstname}} {{editedUser.lastname}}</h1>
+      </div>
+      <div class="row m-3">
+        <h1>Personal Informations</h1>
+        <hr/>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Firstname : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.firstname" [disabled]="DisableInput" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">LastName : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.lastname" [disabled]="DisableInput" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">UserName : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.login" [disabled]="DisableInput" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-3" *ngIf="editedUser.contact">
+        <h1>Contact</h1>
+        <hr/>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Phone : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.contact.phone" [disabled]="DisableInput" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Email : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.contact.email" [disabled]="DisableInput" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row m-3" *ngIf="editedUser.address">
+        <h1>Address</h1>
+        <hr/>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Country : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.address.country"  [disabled]="DisableInput" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">City : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.address.city"  [disabled]="DisableInput" />
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">ZipCode : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.address.zipCode" [disabled]="DisableInput" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="col-form-label">Address : </label>
+            </div>
+            <div class="col-md-3">
+              <input type="text" class="form-text" [(ngModel)]="editedUser.address.address"  [disabled]="DisableInput" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-footer d-flex  justify-content-end">
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end" *ngIf="!DisableInput">
+              <button class="btn btn-danger" type="button" (click)="cancelUpdate()">Cancel</button>
+              <button class="btn btn-success me-md-2" type="button" (click)="saveUpdate()">Save</button>
+          </div>
+          <button  *ngIf="DisableInput" class="btn btn-success" type="button" (click)="upadteProfil()">Update</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div *ngIf="this.videos.length == 0">
+  <h1 class="text-white">No videos</h1>
+</div>
+
+<div *ngIf="this.videos.length > 0">
+  <div class="mt-5">
+    <div class="container text-white">
+      <div class="row">
+        <div class="col-8">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"> <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" [src]="url" width="100%" height="100%" allowfullscreen allow="autoplay"> </iframe> </div>
+          <h5 class="mt-2">{{this.videos[0].title}}</h5>
+        </div>
+
+        <div class="col-4">
+          <h6>{{this.videos[0].hostname}}</h6>
+          <h6>{{this.videos[0].description}}</h6>
+          <a class="btn btn-success">Open on Daily Motion </a>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="text-white">DailyMotion</h3>
+    <carousel
+      [cellsToShow]=5
+      [counter]="true"
+      [height]="300"
+      [loop]="true">
+      <div class="carousel-cell text-white" *ngFor="let video of videos">
+        <div class="container">
+          <img style="height: 200px; " src="{{ video['thumbnails'] }}">
+          <a class="mt-2 nav-link text-white" (click)="clickTest(video.url)">{{video.title}} </a>
+        </div>
+      </div>
+    </carousel>
+
+  </div>
+</div>
