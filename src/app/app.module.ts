@@ -15,12 +15,21 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { ListPlaylistComponent } from './components/playlist/list-playlist/list-playlist.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreatePlaylistDialogComponent } from './components/playlist/create-playlist-dialog/create-playlist-dialog.component';
-import {MatDialog, MatDialogModule} from "@angular/material/dialog";
-import {MatFormFieldModule} from "@angular/material/form-field";
 import { ListVideoPlaylistComponent } from './components/playlist/list-video-playlist/list-video-playlist.component';
 import { ListAdvertUserComponent } from './components/advert/list-advert-user/list-advert-user.component';
 import { AddAdvertUserDialogComponent } from './components/advert/add-advert-user-dialog/add-advert-user-dialog.component';
 import { DetailsAdvertUserComponent } from './components/advert/details-advert-user/details-advert-user.component';
+import {MatModule} from "./mat-module/mat-module.module";
+import { TestStepperComponent } from './components/test-stepper/test-stepper.component';
+import {MatButtonModule} from "@angular/material/button";
+import {MatSliderModule} from "@angular/material/slider";
+import { DisplayAdvertModalComponent } from './components/advert/display-advert-modal/display-advert-modal.component';
+import { ProfilSettingComponent } from './components/user/profil-setting/profil-setting.component';
+import {ChartsModule} from "ng2-charts";
+import { ListAdvertsComponent } from './components/advert/list-adverts/list-adverts.component';
+import { ListUsersComponent } from './components/user/list-users/list-users.component';
+import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+
 
 
 @NgModule({
@@ -36,7 +45,13 @@ import { DetailsAdvertUserComponent } from './components/advert/details-advert-u
     ListVideoPlaylistComponent,
     ListAdvertUserComponent,
     AddAdvertUserDialogComponent,
-    DetailsAdvertUserComponent
+    DetailsAdvertUserComponent,
+    TestStepperComponent,
+    DisplayAdvertModalComponent,
+    ProfilSettingComponent,
+    ListAdvertsComponent,
+    ListUsersComponent,
+    UserDetailsComponent,
 
   ],
   imports: [
@@ -47,9 +62,10 @@ import { DetailsAdvertUserComponent } from './components/advert/details-advert-u
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-
+    MatModule,
+    MatButtonModule,
+    MatSliderModule,
+    ChartsModule
   ],
   providers: [SharedDataService],
   bootstrap: [AppComponent]

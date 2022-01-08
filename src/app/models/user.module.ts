@@ -8,16 +8,15 @@ export class User {
   lastname: string| undefined;
   password: string| undefined;
   login: string| undefined;
-
   contact: {
-    phone: string;
-    email: string;
+    phone: string| undefined;
+    email: string| undefined;
   }| undefined;
   address: {
-    country: string;
-    city: string;
-    zipCode: string;
-    address: string;
+    country: string| undefined;
+    city: string| undefined;
+    zipCode: string| undefined;
+    address: string| undefined;
   }| undefined;
   role: string| undefined;
   playlists: Playlist[]| undefined;

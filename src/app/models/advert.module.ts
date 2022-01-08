@@ -7,11 +7,17 @@ export  class Advert {
   description: string;
   location: string;
   cost:  number;
-  clicks: number;
+  clicks: [
+    { date: Date}
+  ];
   impression: string;
   period: number;
   link: string;
   _id: string;
+  id: string;
   image : string;
+  audience: string;
+  daily_budget: number;
+  coverage:number;
   constructor(){}
 }

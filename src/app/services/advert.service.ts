@@ -14,6 +14,9 @@ export class AdvertService {
 
   constructor(private http: HttpClient) { }
 
+  getAllAds() {
+    return this.http.get(this.url);
+  }
   getAllAdsByUser(id: string) {
     return this.http.get(this.url+'/user/'+id);
   }
@@ -28,6 +31,10 @@ export class AdvertService {
 
   getAdvert(id: string){
     return this.http.get(this.url+'/advert/'+id);
+  }
+
+  addClickByAdvertId(id: String , date: any){
+    return this.http.post(this.url+'click/'+id , date);
   }
 
 }

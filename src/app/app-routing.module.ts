@@ -8,16 +8,24 @@ import {ListPlaylistComponent} from "./components/playlist/list-playlist/list-pl
 import {ListVideoPlaylistComponent} from "./components/playlist/list-video-playlist/list-video-playlist.component";
 import {ListAdvertUserComponent} from "./components/advert/list-advert-user/list-advert-user.component";
 import {DetailsAdvertUserComponent} from "./components/advert/details-advert-user/details-advert-user.component";
+import {TestStepperComponent} from "./components/test-stepper/test-stepper.component";
+import {ProfilSettingComponent} from "./components/user/profil-setting/profil-setting.component";
+import {ListUsersComponent} from "./components/user/list-users/list-users.component";
+import {UserDetailsComponent} from "./components/user/user-details/user-details.component";
 
 const routes: Routes = [
   {path: 'signup' , component: SignupComponent },
   {path: 'login' , component: LoginComponent },
+  {path: 'users' , component: ListUsersComponent },
+  {path: 'Settings/:id' , component: ProfilSettingComponent },
+  {path: 'user/:id' , component: UserDetailsComponent },
   {path: 'search' , component: SearchVideosComponent },
   {path: 'videoDetails' , component: VideoDetailsComponent},
   {path: 'myPlayList' , component: ListPlaylistComponent},
   {path: 'playlists/videos/:id' , component: ListVideoPlaylistComponent},
   {path: 'myAdverts' , component: ListAdvertUserComponent},
   {path: 'advert/:id' , component: DetailsAdvertUserComponent},
+  {path: 'step' , component: TestStepperComponent},
 
 ];
 
