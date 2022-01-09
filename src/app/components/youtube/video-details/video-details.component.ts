@@ -17,7 +17,7 @@ export class VideoDetailsComponent implements OnInit {
 
   url: SafeUrl | undefined ;
   message: any;
-  selectedOption;
+  selectedOption= 'select';
   playlists = [];
   user;
   subscription: Subscription;
@@ -55,22 +55,25 @@ export class VideoDetailsComponent implements OnInit {
   }
 
   addToPlaylist() {
-    alert(this.selectedOption);
-    let video = {
-      url : this.message.id,
-      title: this.message.title,
-      description : this.message.description,
-      hostname: "DailyMotion",
-      thumbnails : this.message.thumbnail_720_url,
-    }
-    this.playlistService.addVideoByPlayList(this.selectedOption,video).subscribe(
-      (data:any) => {
-        if(data.status != 'Error') {
-          console.log(data);
-          alert('ok');
-        }
+    if(this.selectedOption != 'select'){
+      alert(this.selectedOption);
+      let video = {
+        url : this.message.id,
+        title: this.message.title,
+        description : this.message.description,
+        hostname: "DailyMotion",
+        thumbnails : this.message.thumbnail_720_url,
       }
-    )
+      this.playlistService.addVideoByPlayList(this.selectedOption,video).subscribe(
+        (data:any) => {
+          if(data.status != 'Error') {
+            console.log(data);
+            alert('ok');
+          }
+        }
+      )
+    }
+
   }
 
   openDialog(): void {

@@ -23,5 +23,11 @@ export class AuthService {
     return this.http.post<any>(this.url + 'signUp', user);
   }
 
+  isAuth(){
+    return localStorage.getItem('isAuth') === 'true';
+  }
+  getRole(){
+    return localStorage.getItem('typeAuth');
+  }
 
 }

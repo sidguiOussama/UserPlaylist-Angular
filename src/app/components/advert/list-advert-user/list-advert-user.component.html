@@ -11,7 +11,7 @@ TODO LIST
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
-        <th scope="col">Location</th>
+        <th scope="col">Cost</th>
         <th scope="col">Period</th>
         <th scope="col"></th>
 
@@ -21,7 +21,7 @@ TODO LIST
       <tr *ngFor="let advert of adverts;let index=index;">
         <th scope="row">{{index}}</th>
         <td>{{advert.title}}</td>
-        <td>{{advert.location}}</td>
+        <td>{{advert.cost}}</td>
         <td>{{advert.period}} days</td>
         <td class="d-flex justify-content-end">
           <button class="btn-sm btn-success" routerLink="/advert/{{advert._id}}">Details</button>

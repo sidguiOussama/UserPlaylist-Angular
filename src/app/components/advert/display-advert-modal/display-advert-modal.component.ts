@@ -19,16 +19,21 @@ export class DisplayAdvertModalComponent implements OnInit {
     this.advertService.getAllAds().subscribe(
       (data:any)=> {
         if(data.status != 'Error'){
+          /*
+          * Filter list by country of user
+          * */
           this.advert =  data.data[Math.floor(Math.random() * data.data.length)];
-          console.log(this.advert);
+          this.advertService.addImpressionByAdvertId(this.advert.id, {date : new Date().toISOString()}).subscribe(
+            (data) => {
+              console.log(data);
+            }
+          )
         }
-
       }
     )
   }
 
   accept(){
-
     alert(new Date().toISOString());
     this.advertService.addClickByAdvertId(this.advert.id, {date : new Date().toISOString()}).subscribe(
       (data) => {

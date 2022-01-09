@@ -36,5 +36,8 @@ export class AdvertService {
   addClickByAdvertId(id: String , date: any){
     return this.http.post(this.url+'click/'+id , date);
   }
+  addImpressionByAdvertId(id: String , date: any){
+    return this.http.post(this.url+'impression/'+id , date);
+  }
 
 }

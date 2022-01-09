@@ -51,7 +51,7 @@
 
                 <div class="col-sm text-danger">
                   <label>Impressions</label>
-                  <h1>{{advert.impression}} Times</h1>
+                  <h1>{{advert.impressions.length}} Times</h1>
                   <hr/>
                 </div>
 
@@ -114,6 +114,15 @@
                             [labels]="lineChartLabels"
                             [options]="lineChartOptions"
                             [colors]="lineChartColors"
+                            [legend]="lineChartLegend"
+                            [chartType]="lineChartType"
+                            [plugins]="lineChartPlugins">
+                    </canvas>
+                    <canvas baseChart
+                            [datasets]="lineChartDataImpression"
+                            [labels]="lineChartLabels"
+                            [options]="lineChartOptions"
+                            [colors]="lineChartColorsImpressions"
                             [legend]="lineChartLegend"
                             [chartType]="lineChartType"
                             [plugins]="lineChartPlugins">

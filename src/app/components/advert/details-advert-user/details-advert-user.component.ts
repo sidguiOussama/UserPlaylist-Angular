@@ -17,7 +17,10 @@ export class DetailsAdvertUserComponent implements OnInit {
   constructor(private route: ActivatedRoute,private advertService: AdvertService) { }
 
   public lineChartData: ChartDataSets[] = [
-    { data: [0, 0, 0, 0, 0, 0, 0,0,0,0,0,0], label: 'Series A' },
+    { data: [0, 0, 0, 0, 0, 0, 0,0,0,0,0,0], label: 'Clicks' },
+  ];
+  public lineChartDataImpression: ChartDataSets[] = [
+    { data: [0, 0, 0, 0, 0, 0, 0,0,0,0,0,0], label: 'Impressions' },
   ];
   public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September','October','November','December'];
   public lineChartOptions: (ChartOptions & { annotation ?: any }) = {
@@ -26,7 +29,13 @@ export class DetailsAdvertUserComponent implements OnInit {
   public lineChartColors: Color[] = [
     {
       borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
+      backgroundColor: 'blue',
+    },
+  ];
+  public lineChartColorsImpressions: Color[] = [
+    {
+      borderColor: 'black',
+      backgroundColor: 'red',
     },
   ];
   public lineChartLegend = true;
@@ -43,9 +52,12 @@ export class DetailsAdvertUserComponent implements OnInit {
             let date = new Date(click.date);
             let stringValue = this.lineChartData[0].data[date.getMonth()]+'';
             this.lineChartData[0].data[date.getMonth()] =  Number(stringValue)+1;
-            console.log(date.getMonth());
           })
-          console.log(this.advert);
+          this.advert.impressions.map((impression)=> {
+            let date = new Date(impression.date);
+            let stringValue = this.lineChartDataImpression[0].data[date.getMonth()]+'';
+            this.lineChartDataImpression[0].data[date.getMonth()] =  Number(stringValue)+1;
+          })
         }
       }
     )

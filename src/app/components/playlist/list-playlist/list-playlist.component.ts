@@ -38,7 +38,7 @@ export class ListPlaylistComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(CreatePlaylistDialogComponent, {
       width: '40%',
-      height: '30%',
+      height: '40%',
       data: {id: this.user.id},
     });
 

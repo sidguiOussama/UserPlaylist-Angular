@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-6">
                   <select class="form-select" [(ngModel)]="selectedOption" name="first">
-                    <option selected >Choice your Playlist</option>
+                    <option selected value="select">Choice your Playlist</option>
                     <option *ngFor="let o of playlists" value="{{o._id}}">
                       {{o.name}}
                     </option>

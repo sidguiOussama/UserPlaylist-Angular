@@ -10,7 +10,9 @@ export  class Advert {
   clicks: [
     { date: Date}
   ];
-  impression: string;
+  impressions: [
+    { date: Date}
+  ];
   period: number;
   link: string;
   _id: string;

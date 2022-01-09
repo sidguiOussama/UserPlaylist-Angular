@@ -34,7 +34,10 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('typeAuth', ''+data.data[0].role);
           localStorage.setItem('isAuth', 'true');
           localStorage.setItem('credentials' , JSON.stringify({login: this.user.login , password: this.user.password,id: data.data[0].id}));
-            this.router.navigate(['/search'])
+          let navigate = 'search';
+          if(data.data[0].role == 'admin') navigate= "users";
+          else if(data.data[0].role == 'advert') navigate = "myAdverts"
+            this.router.navigate(['/'+navigate])
               .then(() => {
                 window.location.reload();
               });

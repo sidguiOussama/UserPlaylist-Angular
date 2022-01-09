@@ -13,7 +13,14 @@ export class SignupComponent implements OnInit {
 
   userForm: FormGroup | undefined;
   user: User | undefined;
-
+  selectedOption = 'France';
+  choices = [
+    {id: 0 ,name:"France" , label: "France"},
+    {id: 1 ,name:"USA", label: "USA"},
+    {id: 2 ,name:"Italy",label: "Italy"},
+    {id: 3 ,name:"Canada", label: "Canada"},
+    {id: 4 ,name:"Morocco", label: "Morocco"}
+  ];
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {

@@ -12,20 +12,21 @@ import {TestStepperComponent} from "./components/test-stepper/test-stepper.compo
 import {ProfilSettingComponent} from "./components/user/profil-setting/profil-setting.component";
 import {ListUsersComponent} from "./components/user/list-users/list-users.component";
 import {UserDetailsComponent} from "./components/user/user-details/user-details.component";
+import {AuthGuard} from "./Guard/auth.guard";
 
 const routes: Routes = [
   {path: 'signup' , component: SignupComponent },
   {path: 'login' , component: LoginComponent },
-  {path: 'users' , component: ListUsersComponent },
-  {path: 'Settings/:id' , component: ProfilSettingComponent },
-  {path: 'user/:id' , component: UserDetailsComponent },
-  {path: 'search' , component: SearchVideosComponent },
-  {path: 'videoDetails' , component: VideoDetailsComponent},
-  {path: 'myPlayList' , component: ListPlaylistComponent},
-  {path: 'playlists/videos/:id' , component: ListVideoPlaylistComponent},
-  {path: 'myAdverts' , component: ListAdvertUserComponent},
-  {path: 'advert/:id' , component: DetailsAdvertUserComponent},
-  {path: 'step' , component: TestStepperComponent},
+  {path: 'users' , component: ListUsersComponent,canActivate:[AuthGuard], data:{role: ['admin']} },
+  {path: 'Settings/:id' , component: ProfilSettingComponent ,canActivate:[AuthGuard]},
+  {path: 'user/:id' , component: UserDetailsComponent ,canActivate:[AuthGuard],data:{role: ['admin']}},
+  {path: 'search' , component: SearchVideosComponent ,canActivate:[AuthGuard]},
+  {path: 'videoDetails' , component: VideoDetailsComponent,canActivate:[AuthGuard]},
+  {path: 'myPlayList' , component: ListPlaylistComponent,canActivate:[AuthGuard],data:{role: ['user']}},
+  {path: 'playlists/videos/:id' , component: ListVideoPlaylistComponent,canActivate:[AuthGuard],data:{role: ['user']}},
+  {path: 'myAdverts' , component: ListAdvertUserComponent,canActivate:[AuthGuard],data:{role: ['advert']}},
+  {path: 'advert/:id' , component: DetailsAdvertUserComponent,canActivate:[AuthGuard],data:{role: ['admin','advert']}},
+  {path: 'step' , component: TestStepperComponent,canActivate:[AuthGuard]},
 
 ];
 
