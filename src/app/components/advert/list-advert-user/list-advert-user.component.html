@@ -3,11 +3,12 @@ TODO LIST
 * TABLE  HTML
 --->
 
+
 <div class="mt-5">
   <div class="container">
-    <button class="btn btn-success" (click)="openDialog()">New Advert</button>
+    <button class="btn btn-danger" (click)="openDialog()">New Advert</button>
     <table class="mt-5 table table-hover bg-white">
-      <thead class="bg-success">
+      <thead class="bg-danger text-white">
       <tr>
         <th scope="col">#</th>
         <th scope="col">Title</th>
@@ -24,8 +25,8 @@ TODO LIST
         <td>{{advert.cost}}</td>
         <td>{{advert.period}} days</td>
         <td class="d-flex justify-content-end">
-          <button class="btn-sm btn-success" routerLink="/advert/{{advert._id}}">Details</button>
-          <button style="margin-left: 2%;" class="btn-sm btn-danger" (click)="deleteAdvert(advert._id)">Delete</button>
+          <button class="btn-sm btn-outline-success" routerLink="/advert/{{advert._id}}">Details</button>
+          <button style="margin-left: 2%;" class="btn-sm btn-outline-danger" (click)="deleteAdvert(advert._id)">Delete</button>
         </td>
       </tr>
       </tbody>

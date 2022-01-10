@@ -2,15 +2,15 @@
   <div class="container text-white">
       <div class="row">
         <div class="col mb-4">
-          <button class="btn btn-success"  (click)="openDialog()">New Playlist</button>
+          <button class="btn btn-danger"  (click)="openDialog()">New Playlist</button>
         </div>
       </div>
 
       <div class="mt-5">
-          <div class="row row-cols-1 row-cols-md-2">
+          <div class="row row-cols-2">
             <div *ngFor=" let playlist of playlists;">
               <div class="col mb-4">
-                <div class="card rounded bg-transparent border-success">
+                <div class="card rounded bg-transparent border-danger">
                   <div class="row mt-2">
                     <div class="col-4">
                       <div class="m-2 text-center text-black">
@@ -23,13 +23,13 @@
                       <div class="text-center mt-5">
                         <h1 class="">{{playlist.name}}</h1>
                         <p class="">{{playlist.createdAt | date }}</p>
-                        <a class="btn btn-success"  routerLink="/playlists/videos/{{playlist._id}}">Open</a>
-                        <button  style="margin-left: 2%" class="btn btn-danger" (click)="deletePlayList(playlist._id)">Delete</button>
+                        <a class="btn btn-outline-light"  routerLink="/playlists/videos/{{playlist._id}}">Open</a>
+                        <button  style="margin-left: 2%" class="btn btn-outline-danger" (click)="deletePlayList(playlist._id)">Delete</button>
                       </div>
 
                     </div>
                   </div>
-                  <div class="card-footer bg-success mt-5">
+                  <div class="card-footer bg-danger mt-5">
                     <div class="row pt-3">
                       <div class="col-sm">
                         <div class="text-center ">

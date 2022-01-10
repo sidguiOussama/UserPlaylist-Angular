@@ -11,6 +11,7 @@ import {DomSanitizer, SafeUrl} from "@angular/platform-browser";
 export class ListVideoPlaylistComponent implements OnInit {
 
   videos = [];
+  videoPlay;
   url: SafeUrl | undefined ;
   constructor(private playlistService: PlaylistService, private  route: ActivatedRoute,private sanitizer: DomSanitizer) { }
   ngOnInit(): void {
@@ -21,6 +22,7 @@ export class ListVideoPlaylistComponent implements OnInit {
           this.videos = data.data.videos;
           if(this.videos.length > 0) {
             this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + this.videos[0].url + '?autoplay=1');
+            this.videoPlay = this.videos[0];
           }
           console.log(this.videos.length);
         }
@@ -28,8 +30,8 @@ export class ListVideoPlaylistComponent implements OnInit {
     )
   }
 
-  clickTest(url: any) {
-    alert(url);
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + url + '?autoplay=1');
+  clickTest(video: any) {
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + video.url + '?autoplay=1');
+    this.videoPlay = video;
   }
 }

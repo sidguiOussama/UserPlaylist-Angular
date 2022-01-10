@@ -1,4 +1,4 @@
-<div class="mt-5">
+<!--<div class="mt-5">
   <div class="container text-white">
     <div class="row">
         <div class="col-8">
@@ -7,7 +7,7 @@
 
           <div class="mt-2">
             <div class="row">
-                <div class="col-6">
+                <div class="col-sm">
                   <select class="form-select" [(ngModel)]="selectedOption" name="first">
                     <option selected value="select">Choice your Playlist</option>
                     <option *ngFor="let o of playlists" value="{{o._id}}">
@@ -15,8 +15,8 @@
                     </option>
                   </select>
                 </div>
-                <div class="col-6">
-                  <h5  style="margin: 2%;" class="btn btn-success" (click)="addToPlaylist()">Add to Playlist</h5>
+                <div class="col-sm">
+                  <h5  style="margin-left: 2%;" class="btn btn-danger" (click)="addToPlaylist()">Add to Playlist</h5>
                 </div>
             </div>
 
@@ -31,5 +31,51 @@
         <a class="btn btn-success">Open on Daily Motion </a>
       </div>
     </div>
+  </div>
+</div>
+-->
+
+<div class="mt-5">
+  <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"> <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" [src]="url" width="100%" height="100%" allowfullscreen allow="autoplay"> </iframe> </div>
+          <div class="row mt-5">
+            <div class="col-md-5">
+              <h2 class="mt-2 text-white">{{ message.title }}</h2>
+            </div>
+            <div class="col-md-7 d-flex justify-content-end">
+              <div class="row d-flex justify-content-end">
+                <div class="col-md-7">
+                  <select class="form-select" [(ngModel)]="selectedOption" name="first">
+                    <option selected value="select">Choice your Playlist</option>
+                    <option *ngFor="let o of playlists" value="{{o._id}}">
+                      {{o.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="col-md-5">
+                  <button  style="margin-left: 2%;" class="btn btn-danger" (click)="addToPlaylist()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-plus" viewBox="0 0 16 16">
+                      <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+                      <path d="M8 4a.5.5 0 0 1 .5.5V6H10a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0V7H6a.5.5 0 0 1 0-1h1.5V4.5A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <hr class="bg-white"/>
+        </div>
+        <div class="col-md-4 text-white">
+          <label>Owner</label>
+          <h5>@{{message.owner}}</h5>
+          <hr/>
+          <label>Description</label>
+          <h6>{{message.description}}</h6>
+          <hr/>
+        </div>
+      </div>
   </div>
 </div>

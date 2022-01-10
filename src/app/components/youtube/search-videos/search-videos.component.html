@@ -17,37 +17,41 @@
 -->
 
 
-<div class="mt-3">
+<div class="mt-4">
   <div class="container col-5 ">
     <div class="row">
         <div class="col-8">
           <input class="form-control" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="search">
         </div>
       <div class="col-4">
-        <button class="btn btn-success" type="submit" (click)="searchFunction()">Search</button>
+        <button class="btn btn-outline-danger" type="submit" (click)="searchFunction()">Search</button>
       </div>
     </div>
 
   </div>
 
 
-  <div class="m-3">
+  <div class="m-3 mt-2">
 
-    <h3 class="text-white">Youtube</h3>
-    <carousel
-      [cellsToShow]=5
-      [counter]="true"
-      [height]="300"
-      [loop]="true">
-      <div class="carousel-cell text-white" *ngFor="let item of data.list">
-        <div class="container">
-          <img style="height: 200px; " src="{{ item['thumbnail_720_url'] }}">
-          <p class="mt-2 text-white" (click)="clickTest(item)">{{item.title}} </p>
+
+      <h1 class="text-danger d-flex justify-content-start m-1" >Youtube</h1>
+      <hr class="bg-danger" style="height: 5px"/>
+      <carousel
+        [cellsToShow]=5
+        [counter]="true"
+        [height]="300"
+        [loop]="true">
+        <div class="carousel-cell text-white" *ngFor="let item of data.list">
+          <div class="container">
+            <img style="height: 200px; " src="{{ item['thumbnail_720_url'] }}">
+            <p class="mt-2 text-white" (click)="clickTest(item)">{{item.title}} </p>
+          </div>
         </div>
-      </div>
-    </carousel>
+      </carousel>
 
-    <h3 class="text-white">DailyMotion</h3>
+
+      <h1 class="text-danger d-flex justify-content-start m-1" >DailyMotion</h1>
+    <hr class="bg-danger" style="height: 5px"/>
     <carousel
       [cellsToShow]=5
       [counter]="true"

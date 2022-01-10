@@ -46,7 +46,7 @@ export class VideoDetailsComponent implements OnInit {
   setIntreval(){
     this.myInterval = setInterval(() => {
       this.openDialog();
-    }, 5000);
+    }, 500000);
   }
   ngOnDestroy() {
     if (this.myInterval) {
