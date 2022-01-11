@@ -29,6 +29,8 @@ import {ChartsModule} from "ng2-charts";
 import { ListAdvertsComponent } from './components/advert/list-adverts/list-adverts.component';
 import { ListUsersComponent } from './components/user/list-users/list-users.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
 
 
 
@@ -65,7 +67,8 @@ import { UserDetailsComponent } from './components/user/user-details/user-detail
     MatModule,
     MatButtonModule,
     MatSliderModule,
-    ChartsModule
+    ChartsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [SharedDataService],
   bootstrap: [AppComponent]

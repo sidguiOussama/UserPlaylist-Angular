@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "adsimages-9bd1a": {
+      "hosting": {
+        "user-playlist-angular": [
+          "adsimages-9bd1a"
+        ]
+      }
+    }
+  }
+}

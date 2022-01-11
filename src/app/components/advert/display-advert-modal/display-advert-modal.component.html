@@ -1,5 +1,24 @@
 <button class="close" mat-button (click)="onNoClick()">X</button>
-<h1>{{advert.id}}</h1>
-<h1>{{advert.title}}</h1>
-<h2>{{advert.description}}</h2>
-<button class="btn btn-success" (click)="accept()">Join</button>
+
+<div class="row mt-5">
+
+  <div class="col-md-6">
+    <a class="display-1 text-danger d-flex justify-content-center">{{advert.title}}</a>
+    <hr/>
+    <a class="d-flex justify-content-center">{{advert.description}}</a>
+    <a class="d-flex justify-content-center text-primary" (click)="accept()">{{advert.link}}</a>
+    <a class="d-flex justify-content-center btn btn-outline-danger mt-5" (click)="accept()">Click here</a>
+  </div>
+
+  <div class="col-md-6" *ngIf="advert.image == 'firebase_url'">
+    <img src="{{imageAdvert}}" class="rounded float-right " alt="...">
+  </div>
+  <!--
+
+
+
+  -->
+
+</div>
+
+

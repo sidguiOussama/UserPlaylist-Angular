@@ -46,7 +46,7 @@ export class VideoDetailsComponent implements OnInit {
   setIntreval(){
     this.myInterval = setInterval(() => {
       this.openDialog();
-    }, 500000);
+    }, 5000);
   }
   ngOnDestroy() {
     if (this.myInterval) {
@@ -79,7 +79,7 @@ export class VideoDetailsComponent implements OnInit {
   openDialog(): void {
     const dialogRef = this.dialog.open(DisplayAdvertModalComponent, {
       width: '60%',
-      height: '40%',
+      height: '60%',
       data: {id: this.user.id},
     });
 

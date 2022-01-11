@@ -4,6 +4,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {Advert} from "../../../models/advert.module";
 import {AdvertService} from "../../../services/advert.service";
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AngularFireStorage} from "@angular/fire/storage";
 
 
 @Component({
@@ -14,6 +15,7 @@ import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angul
 export class AddAdvertUserDialogComponent implements OnInit {
 
   id;
+  selectedFile = '';
   advert: Advert = new Advert();
   form: FormGroup;
   MoviesData: Array<any> = [
@@ -29,6 +31,7 @@ export class AddAdvertUserDialogComponent implements OnInit {
   ];
 
   constructor(
+    private storage: AngularFireStorage,
     private fb: FormBuilder,
     private advertService: AdvertService,
     public dialogRef: MatDialogRef<AddAdvertUserDialogComponent>,
@@ -54,6 +57,17 @@ export class AddAdvertUserDialogComponent implements OnInit {
     this.advertService.addAdsByUser(this.id, this.advert).subscribe(
       (data:any) => {
         if(data.status != 'Error'){
+          console.log(data.data);
+          if(this.selectedFile != ''){
+            this.advertService.getAllAdsByUser(this.id).subscribe(
+              (data2:any) => {
+                if(data2.status != 'Error'){
+                  let id = data2.data.adverts[data2.data.adverts.length-1]._id;
+                  this.storage.ref('upload/'+id).put(this.selectedFile);
+                }
+              }
+            );
+          }
           this.dialogRef.close('ok');
         }
       }
@@ -64,7 +78,6 @@ export class AddAdvertUserDialogComponent implements OnInit {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.advert.image = file;
-      alert('image');
     }
   }
 
@@ -90,4 +103,15 @@ export class AddAdvertUserDialogComponent implements OnInit {
     this.advert.location = this.form.value.isArray.join(',');
   }
 
+  onFileSelected(event){
+
+    if(event.target.files.length > 0){
+      this.selectedFile = event.target.files[0];
+      this.advert.image = 'firebase_url'
+    }else {
+      this.selectedFile = '';
+      this.advert.image = 'none'
+    }
+
+  }
 }
