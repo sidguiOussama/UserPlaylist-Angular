@@ -4,10 +4,10 @@
 
 export const environment = {
   production: false,
-  authUrl: 'http://localhost:3000/api/v1/auth/',
-  userUrl: 'http://localhost:3000/api/v1/Users/',
-  playlistUrl: 'http://localhost:3000/api/v1/Playlists/',
-  advertUrl: 'http://localhost:3000/api/v1/Ads/',
+  authUrl: 'https://user-playlist-api.herokuapp.com/api/v1/auth/',
+  userUrl: 'https://user-playlist-api.herokuapp.com/api/v1/Users/',
+  playlistUrl: 'https://user-playlist-api.herokuapp.com/api/v1/Playlists/',
+  advertUrl: 'https://user-playlist-api.herokuapp.com/api/v1/Ads/',
   firebaseConfig : {
     apiKey: "AIzaSyAJLkOAuf4L_KSTcsdCYoXHEnmbhRs4E9E",
     authDomain: "adsimages-9bd1a.firebaseapp.com",
