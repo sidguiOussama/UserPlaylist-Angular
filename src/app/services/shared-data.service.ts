@@ -11,7 +11,7 @@ export class SharedDataService {
 
   constructor() { }
 
-  nextMessage(message: string) {
+  nextMessage(message: any) {
     this.message.next(message);
   }
 }

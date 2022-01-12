@@ -41,10 +41,10 @@
         [counter]="true"
         [height]="300"
         [loop]="true">
-        <div class="carousel-cell text-white" *ngFor="let item of data.list">
+        <div class="carousel-cell text-white" *ngFor="let item of dataYoutube.items">
           <div class="container">
-            <img style="height: 200px; " src="{{ item['thumbnail_720_url'] }}">
-            <p class="mt-2 text-white" (click)="clickTest(item)">{{item.title}} </p>
+            <img style="height: 200px;" src="{{ item.snippet.thumbnails.medium.url }}">
+            <p class="mt-2 text-white" (click)="clickTest(item,'youtube')">{{item.snippet.title}}</p>
           </div>
         </div>
       </carousel>
@@ -60,7 +60,7 @@
       <div class="carousel-cell text-white" *ngFor="let item of data.list">
         <div class="container">
           <img style="height: 200px; " src="{{ item['thumbnail_720_url'] }}">
-          <a class="mt-2 nav-link text-white" (click)="clickTest(item)">{{item.title}} </a>
+          <a class="mt-2 nav-link text-white" (click)="clickTest(item,'dailymotion')">{{item.title}} </a>
         </div>
       </div>
     </carousel>

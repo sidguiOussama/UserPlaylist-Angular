@@ -45,10 +45,10 @@ export class DisplayAdvertModalComponent implements OnInit {
   }
 
   accept(){
-    alert(new Date().toISOString());
     this.advertService.addClickByAdvertId(this.advert.id, {date : new Date().toISOString()}).subscribe(
       (data) => {
         console.log(data);
+        window.location.href = ''+this.advert.link;
       }
     )
   }

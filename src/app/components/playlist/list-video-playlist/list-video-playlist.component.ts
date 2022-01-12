@@ -21,7 +21,11 @@ export class ListVideoPlaylistComponent implements OnInit {
         if(data.status != "Error"){
           this.videos = data.data.videos;
           if(this.videos.length > 0) {
-            this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + this.videos[0].url + '?autoplay=1');
+            if(this.videos[0].hostname == 'dailymotion'){
+              this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + this.videos[0].url + '?autoplay=1');
+            }else if(this.videos[0].hostname == 'youtube'){
+              this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + this.videos[0].url + '?autoplay=1');
+            }
             this.videoPlay = this.videos[0];
           }
           console.log(this.videos.length);
@@ -31,7 +35,12 @@ export class ListVideoPlaylistComponent implements OnInit {
   }
 
   clickTest(video: any) {
-    this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + video.url + '?autoplay=1');
+    if(video.hostname == 'dailymotion'){
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + video.url + '?autoplay=1');
+    }else if(video.hostname == 'youtube'){
+      this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + video.url + '?autoplay=1');
+    }
+
     this.videoPlay = video;
   }
 }

@@ -2,22 +2,33 @@
 
 <div class="row mt-5">
 
-  <div class="col-md-6">
-    <a class="display-1 text-danger d-flex justify-content-center">{{advert.title}}</a>
-    <hr/>
-    <a class="d-flex justify-content-center">{{advert.description}}</a>
-    <a class="d-flex justify-content-center text-primary" (click)="accept()">{{advert.link}}</a>
-    <a class="d-flex justify-content-center btn btn-outline-danger mt-5" (click)="accept()">Click here</a>
+  <div *ngIf="advert.image == 'firebase_url'">
+    <table>
+      <tr>
+        <td class="align-middle mw-100" style="text-align: left;">
+          <a class="display-1 text-danger d-flex justify-content-center">{{advert.title}}</a>
+          <hr/>
+          <a class="d-flex justify-content-center">{{advert.description}}</a>
+          <a class="d-flex justify-content-center text-primary" (click)="accept()">{{advert.link}}</a>
+          <a class="d-flex justify-content-center btn btn-outline-danger mt-5" (click)="accept()">Click here</a>
+        </td>
+        <td class="align-middle" style="text-align: right">
+          <img src="{{imageAdvert}}" class="rounded float-right resize" alt="...">
+        </td>
+      </tr>
+    </table>
   </div>
 
-  <div class="col-md-6" *ngIf="advert.image == 'firebase_url'">
-    <img src="{{imageAdvert}}" class="rounded float-right " alt="...">
+  <div *ngIf="advert.image != 'firebase_url'">
+    <div class="col-md-12">
+      <a class="display-1 text-danger d-flex justify-content-center">{{advert.title}}</a>
+      <hr/>
+      <a class="d-flex justify-content-center">{{advert.description}}</a>
+      <a class="d-flex justify-content-center text-primary" (click)="accept()">{{advert.link}}</a>
+      <a class="d-flex justify-content-center btn btn-outline-danger mt-5" (click)="accept()">Click here</a>
+    </div>
   </div>
-  <!--
 
-
-
-  -->
 
 </div>
 

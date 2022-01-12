@@ -27,6 +27,7 @@ const routes: Routes = [
   {path: 'myAdverts' , component: ListAdvertUserComponent,canActivate:[AuthGuard],data:{role: ['advert']}},
   {path: 'advert/:id' , component: DetailsAdvertUserComponent,canActivate:[AuthGuard],data:{role: ['admin','advert']}},
   {path: 'step' , component: TestStepperComponent,canActivate:[AuthGuard]},
+  { path: '**', redirectTo: 'login' }
 
 ];
 

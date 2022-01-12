@@ -29,7 +29,11 @@ export class VideoDetailsComponent implements OnInit {
     this.setIntreval();
     this.sharedDataService.sharedMessage.subscribe(
       (message: any) => {
-        this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + message.id + '?autoplay=1');
+        if(message.host == "dailymotion"){
+          this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.dailymotion.com/embed/video/' + message.item.id + '?autoplay=1');
+        }else if(message.host == "youtube"){
+          this.url = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + message.item.id.videoId + '?autoplay=1');
+        }
         this.message = message;
         console.log(this.message);
         this.user = JSON.parse(localStorage.getItem('credentials'));
@@ -46,7 +50,7 @@ export class VideoDetailsComponent implements OnInit {
   setIntreval(){
     this.myInterval = setInterval(() => {
       this.openDialog();
-    }, 5000);
+    }, 240000);
   }
   ngOnDestroy() {
     if (this.myInterval) {
@@ -57,13 +61,25 @@ export class VideoDetailsComponent implements OnInit {
   addToPlaylist() {
     if(this.selectedOption != 'select'){
       alert(this.selectedOption);
-      let video = {
-        url : this.message.id,
-        title: this.message.title,
-        description : this.message.description,
-        hostname: "DailyMotion",
-        thumbnails : this.message.thumbnail_720_url,
+      let video;
+      if(this.message.host == 'dailymotion'){
+        video = {
+          url : this.message.item.id,
+          title: this.message.item.title,
+          description : this.message.item.description,
+          hostname: "dailyMotion",
+          thumbnails : this.message.item.thumbnail_720_url,
+        }
+      }else if(this.message.host == 'youtube'){
+        video = {
+          url : this.message.item.id.videoId,
+          title: this.message.item.snippet.title,
+          description : this.message.item.snippet.description,
+          hostname: "youtube",
+          thumbnails : this.message.item.snippet.thumbnails.medium.url
+        }
       }
+
       this.playlistService.addVideoByPlayList(this.selectedOption,video).subscribe(
         (data:any) => {
           if(data.status != 'Error') {

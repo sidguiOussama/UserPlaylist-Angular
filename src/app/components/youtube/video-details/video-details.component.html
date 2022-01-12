@@ -1,39 +1,3 @@
-<!--<div class="mt-5">
-  <div class="container text-white">
-    <div class="row">
-        <div class="col-8">
-          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"> <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" [src]="url" width="100%" height="100%" allowfullscreen allow="autoplay"> </iframe> </div>
-          <h5 class="mt-2">{{ message.title }}</h5>
-
-          <div class="mt-2">
-            <div class="row">
-                <div class="col-sm">
-                  <select class="form-select" [(ngModel)]="selectedOption" name="first">
-                    <option selected value="select">Choice your Playlist</option>
-                    <option *ngFor="let o of playlists" value="{{o._id}}">
-                      {{o.name}}
-                    </option>
-                  </select>
-                </div>
-                <div class="col-sm">
-                  <h5  style="margin-left: 2%;" class="btn btn-danger" (click)="addToPlaylist()">Add to Playlist</h5>
-                </div>
-            </div>
-
-
-          </div>
-
-        </div>
-
-      <div class="col-4">
-        <h6>@{{message.owner}}</h6>
-        <h6>{{message.description}}</h6>
-        <a class="btn btn-success">Open on Daily Motion </a>
-      </div>
-    </div>
-  </div>
-</div>
--->
 
 <div class="mt-5">
   <div class="container">
@@ -41,9 +5,14 @@
         <div class="col-md-8">
           <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;"> <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" [src]="url" width="100%" height="100%" allowfullscreen allow="autoplay"> </iframe> </div>
           <div class="row mt-5">
-            <div class="col-md-5">
-              <h2 class="mt-2 text-white">{{ message.title }}</h2>
+
+            <div class="col-md-5" *ngIf="message.host=='dailymotion'">
+              <h2 class="mt-2 text-white">{{ message.item.title }}</h2>
             </div>
+            <div class="col-md-5" *ngIf="message.host=='youtube'">
+              <h2 class="mt-2 text-white">{{ message.item.snippet.title }}</h2>
+            </div>
+
             <div class="col-md-7 d-flex justify-content-end">
               <div class="row d-flex justify-content-end">
                 <div class="col-md-7">
@@ -68,12 +37,20 @@
 
           <hr class="bg-white"/>
         </div>
-        <div class="col-md-4 text-white">
+        <div class="col-md-4 text-white" *ngIf="message.host=='dailymotion'">
           <label>Owner</label>
-          <h5>@{{message.owner}}</h5>
+          <h5>@{{message.item.owner}}</h5>
           <hr/>
           <label>Description</label>
-          <h6>{{message.description}}</h6>
+          <h6>{{message.item.description}}</h6>
+          <hr/>
+        </div>
+        <div class="col-md-4 text-white" *ngIf="message.host=='youtube'">
+          <label>Owner</label>
+          <h5>@{{message.item.snippet.channelTitle}}</h5>
+          <hr/>
+          <label>Description</label>
+          <h6>{{message.item.snippet.description}}</h6>
           <hr/>
         </div>
       </div>
