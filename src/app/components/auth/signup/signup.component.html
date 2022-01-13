@@ -26,6 +26,18 @@
         </div>
       </div>
 
+        <div class="row mt-3">
+          <div class="col-6">
+            <label>Role Type</label>
+            <select class="form-select col-sm" [(ngModel)]="selectedRole"  formControlName="role">
+              <option  *ngFor="let o of roles" value="{{o.name}}">
+                {{o.label}}
+              </option>
+            </select>
+          </div>
+
+        </div>
+
       <div class="row mt-3">
         <h1>Contact</h1>
         <hr/>

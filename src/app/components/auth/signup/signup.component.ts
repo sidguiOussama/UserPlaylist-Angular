@@ -14,12 +14,17 @@ export class SignupComponent implements OnInit {
   userForm: FormGroup | undefined;
   user: User | undefined;
   selectedOption = 'France';
+  selectedRole = 'user';
   choices = [
     {id: 0 ,name:"France" , label: "France"},
     {id: 1 ,name:"USA", label: "USA"},
     {id: 2 ,name:"Italy",label: "Italy"},
     {id: 3 ,name:"Canada", label: "Canada"},
     {id: 4 ,name:"Morocco", label: "Morocco"}
+  ];
+  roles = [
+    {id: 0 ,name:"user" , label: "user"},
+    {id: 1 ,name:"advert" , label: "advertiser"}
   ];
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -31,7 +36,7 @@ export class SignupComponent implements OnInit {
       phone: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required),
-
+      role: new FormControl('', Validators.required),
       country: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       zipCode: new FormControl('', Validators.required),
@@ -53,7 +58,7 @@ export class SignupComponent implements OnInit {
       zipCode : this.userForm?.get('zipCode')?.value,
       address : this.userForm?.get('address')?.value
     }
-    this.user.role = 'userSimple';
+    this.user.role = this.selectedRole;
 
     this.authService.signup(this.user).subscribe(
       (data) => {
@@ -66,4 +71,5 @@ export class SignupComponent implements OnInit {
     );
 
   }
+
 }
